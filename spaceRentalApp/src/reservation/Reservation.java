@@ -6,6 +6,8 @@ import java.util.Objects;
 /**
  * 예약 정보를 담는 클래스
  */
+
+
 public class Reservation {
     private Long id;
     private final Long userId;       // 예약한 사용자 ID

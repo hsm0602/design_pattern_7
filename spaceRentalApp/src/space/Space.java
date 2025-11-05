@@ -1,6 +1,8 @@
 package space;
 
 import pattern.SpaceComponent;
+
+import java.util.Collections;
 import java.util.Objects;
 import java.util.List;
 import java.util.ArrayList;
@@ -45,10 +47,10 @@ public class Space implements SpaceComponent {
     @Override public int getCost() { return baseCost; }
 
     // 필요하면 getter (getType(), getScale(), getUnits(), getSecurities(), getName()) 주석 해제하여 사용.
-    // public SpaceType getType() { return type; }
-    // public SpaceScale getScale() { return scale; }
-    // public List<UnitSpace> getUnits() { return Collections.unmodifiableList(units); }
-    // public List<SecuritySystem> getSecurities() { return Collections.unmodifiableList(securities); }
-    // public String getName() { return name; }
+     public SpaceType getType() { return type; }
+     public SpaceScale getScale() { return scale; }
+     public List<UnitSpace> getUnits() { return Collections.unmodifiableList(units); }
+     public List<SecuritySystem> getSecurities() { return Collections.unmodifiableList(securities); }
+     public String getName() { return name; }
 }
 
