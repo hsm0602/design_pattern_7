@@ -23,15 +23,14 @@ public class Space implements SpaceComponent {
     public Space(String id, String name,
                  SpaceType type, SpaceScale scale,
                  List<UnitSpace> units,
-                 List<SecuritySystem> securities,
-                 int baseCost) {
+                 List<SecuritySystem> securities) 
+    {
         this.id = Objects.requireNonNull(id);
         this.name = Objects.requireNonNull(name);
         this.type = type;
         this.scale = scale;
         this.units = new ArrayList<>(units);
         this.securities = new ArrayList<>(securities);
-        this.baseCost = baseCost;
     }
 
 
@@ -44,7 +43,7 @@ public class Space implements SpaceComponent {
                 units, securities);
     }
 
-    @Override public int getCost() { return baseCost; }
+    // @Override public int getCost() { return baseCost; }
 
     // 필요하면 getter (getType(), getScale(), getUnits(), getSecurities(), getName()) 주석 해제하여 사용.
      public SpaceType getType() { return type; }
