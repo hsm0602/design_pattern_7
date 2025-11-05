@@ -15,7 +15,6 @@ public interface SpaceFactory {
         SpaceType type,
         SpaceScale scale,
         List<UnitSpace> units,
-        List<SecuritySystem> securities,
-        int baseCost
+        List<SecuritySystem> securities
     );
 }
