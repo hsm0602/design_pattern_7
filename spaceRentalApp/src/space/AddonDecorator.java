@@ -13,7 +13,7 @@ public abstract class AddonDecorator implements SpaceComponent {
         this.delegate = delegate;
     }
 
-    @Override public String getId() { return delegate.getId(); } // 동일 공간 식별 유지
+    @Override public Long getId() { return delegate.getId(); } // 동일 공간 식별 유지
 
 
 }
