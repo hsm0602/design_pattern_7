@@ -1,6 +1,7 @@
 package reservation;
 
 import pattern.ReservationObserver;
+import space.Space;
 import space.SpaceRepository;
 import user.MemoryUserRepository;
 import user.PaymentMethod;
@@ -39,13 +40,14 @@ public class ReservationService {
 
     /**
      * 공간을 예약하는 핵심 로직
-     * @param userId 예약자 ID
+     *
+     * @param userId  예약자 ID
      * @param spaceId 공간 ID (String으로 변경)
-     * @param start 시작 시간
-     * @param end 종료 시간
+     * @param start   시작 시간
+     * @param end     종료 시간
      * @return 예약 성공 시 Reservation 객체, 실패 시 null
      */
-    public Reservation reserve(Long userId, String spaceId, LocalDateTime start, LocalDateTime end) {
+    public Reservation reserve(Long userId, Long spaceId, LocalDateTime start, LocalDateTime end) {
         // 1. 사용자 조회 및 로그인 확인
         User user = userRepository.findById(userId);
         if (user == null) {
@@ -85,6 +87,7 @@ public class ReservationService {
 
     /**
      * 예약을 취소하는 로직
+     *
      * @param reservationId 취소할 예약 ID
      */
     public void cancel(Long reservationId) {
@@ -116,9 +119,11 @@ public class ReservationService {
 
     /**
      * 나의 예약 목록을 조회하는 로직
+     *
      * @param userId 사용자 ID
      * @return 예약 목록
      */
     public List<Reservation> myReservations(Long userId) {
         return reservationRepository.findByUser(userId);
+    }
 }

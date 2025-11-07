@@ -11,13 +11,13 @@ import java.util.Objects;
 public class Reservation {
     private Long id;
     private final Long userId;       // 예약한 사용자 ID
-    private final String spaceId;    // 예약된 공간 ID (Space.java의 id가 String이므로 String으로 변경)
+    private final Long spaceId;    // 예약된 공간 ID
     private final TimeState time;    // 예약 시간
     private ReservationStatus status;  // 예약 상태
     private final LocalDateTime createdAt; // 예약 생성 시각
 
     // --- 생성자 ---
-    public Reservation(Long userId, String spaceId, TimeState time) {
+    public Reservation(Long userId, Long spaceId, TimeState time) {
         this.userId = userId;
         this.spaceId = spaceId;
         this.time = time;
@@ -30,7 +30,7 @@ public class Reservation {
     // --- Getter ---
     public Long getId() { return id; }
     public Long getUserId() { return userId; }
-    public String getSpaceId() { return spaceId; }
+    public Long getSpaceId() { return spaceId; }
     public TimeState getTime() { return time; }
     public ReservationStatus getStatus() { return status; }
     public LocalDateTime getCreatedAt() { return createdAt; }
