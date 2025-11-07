@@ -1,6 +1,9 @@
 package reservation;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 /**
@@ -21,6 +24,13 @@ public class TimeState {
     // --- Getter ---
     public LocalDateTime getStart() { return start; }
     public LocalDateTime getEnd() { return end; }
+    public int getPeriod() {
+        LocalDate startDate = this.start.toLocalDate();
+        LocalDate endDate = this.end.toLocalDate();
+
+        return (int) ChronoUnit.DAYS.between(startDate, endDate);
+
+    }
 
     /**
      * 두 시간대(TimeState)가 겹치는지 확인하는 로직

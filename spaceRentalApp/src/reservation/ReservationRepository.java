@@ -48,7 +48,7 @@ public class ReservationRepository {
      * @param end 종료 시간
      * @return 겹치는 예약 목록
      */
-    public List<Reservation> findBySpaceBetween(String spaceId, LocalDateTime start, LocalDateTime end) {
+    public List<Reservation> findBySpaceBetween(Long spaceId, LocalDateTime start, LocalDateTime end) {
         TimeState targetTime = new TimeState(start, end);
 
         return store.values().stream()

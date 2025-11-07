@@ -38,7 +38,7 @@ public class PaymentService {
         return result;
     }
     public BigDecimal previewTotal(Reservation reservation){
-        int period=reservation.getTime().getEnd()-reservation.getTime().getStart()+1;//시간 관련 메서드로 교체 해야함.
+        int period=reservation.getTime().getPeriod();//시간 관련 메서드로 교체 해야함.
         BigDecimal base = previewOnedayTotal(reservation);
         return base.multiply(new BigDecimal(period));
     }
@@ -55,8 +55,8 @@ public class PaymentService {
 
         return result;
     }
-    public BigDecimal previewTotal(Reservation reservation){
-        int period=reservation.getTime().getEnd()-reservation.getTime().getStart()+1;//시간 관련 메서드로 교체 해야함.
+    public BigDecimal finalTotal(Reservation reservation){
+        int period=reservation.getTime().getPeriod();//시간 관련 메서드로 교체 해야함.
         BigDecimal base =OnedayTotal(reservation);
         return base.multiply(new BigDecimal(period));
     }
