@@ -31,13 +31,14 @@ public class PaymentService {
         SecurityPaymentFactory spf = new SecurityPaymentFactory();
         ScalePaymentFactory cpf = new ScalePaymentFactory();
         SpaceTypePaymentFactory stpf = new SpaceTypePaymentFactory();
+        UnitSpacePaymentFactory usp = new UnitSpacePaymentFactory();
         BigDecimal result =new BigDecimal(0);
-        Space space = spaceRepository.findById(reservation.getSpaceId());
-        result = stpf.get(space.getType()).apply(cpf.get(space.getScale()).apply(space.getSecurities().stream().map(e->spf.get(e).applyPayment(new BigDecimal(0))).reduce(BigDecimal::add).get()));
+        Space space = spaceRepository.findById(reservation.getSpaceId());//모든 id값은 Long으로 통일 해야함..
+        result = space.getUnits().stream().map(e->usp.get(e).apply(new BigDecimal(0))).reduce(BigDecimal::add).get().add(stpf.get(space.getType()).apply(cpf.get(space.getScale()).apply(space.getSecurities().stream().map(e->spf.get(e).applyPayment(new BigDecimal(0))).reduce(BigDecimal::add).get())));
         return result;
     }
     public BigDecimal previewTotal(Reservation reservation){
-        int period=reservation.getTime().getEnd()-reservation.getTime().getStart()+1;
+        int period=reservation.getTime().getEnd()-reservation.getTime().getStart()+1;//시간 관련 메서드로 교체 해야함.
         BigDecimal base = previewOnedayTotal(reservation);
         return base.multiply(new BigDecimal(period));
     }
@@ -50,12 +51,12 @@ public class PaymentService {
         Space space = spaceRepository.findById(reservation.getSpaceId());
         UnitSpacePaymentFactory usp = new UnitSpacePaymentFactory();
         DiscountPolicyFactory dpf = new DiscountPolicyFactory();
-        result =dpf.get(user.getUserGrade()).discount(base.add(space.getUnits().stream().map(e->usp.get(e).apply(new BigDecimal(0))).reduce(BigDecimal::add).get()));
+        result =dpf.get(user.getUserGrade()).discount(base);
 
         return result;
     }
     public BigDecimal previewTotal(Reservation reservation){
-        int period=reservation.getTime().getEnd()-reservation.getTime().getStart()+1;
+        int period=reservation.getTime().getEnd()-reservation.getTime().getStart()+1;//시간 관련 메서드로 교체 해야함.
         BigDecimal base =OnedayTotal(reservation);
         return base.multiply(new BigDecimal(period));
     }
