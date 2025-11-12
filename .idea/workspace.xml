@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6734c488-08cc-4bdf-b708-4ea5eca64c25" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/design_pattern_7.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spaceRentalApp/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/spaceRentalApp/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +48,19 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="애플리케이션.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -69,6 +81,8 @@
       <workItem from="1762734551204" duration="8000" />
       <workItem from="1762745251143" duration="5332000" />
       <workItem from="1762920027134" duration="85000" />
+      <workItem from="1762920428691" duration="23000" />
+      <workItem from="1762920458136" duration="107000" />
     </task>
     <servers />
   </component>
