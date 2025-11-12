@@ -1,9 +1,9 @@
-package space;
+package space.domain;
 
-import pattern.SpaceComponent;
+import space.option.*;
 
+import java.math.BigDecimal;
 import java.util.Collections;
-import java.util.Objects;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -11,13 +11,15 @@ import java.util.ArrayList;
  * 공간 정보를 담는 클래스. Decorator Pattern의 기본 컴포넌트 역할.
  */
 // space/Space.java
-public class Space implements SpaceComponent {
-    private final Long id;
-    private final SpaceType type;
-    private final SpaceScale scale;
-    private final List<UnitSpace> units;  
-    private final List<SecuritySystem> securities;
-    private final String name;   // 예: "강남 회의실 A"
+public class Space {
+    private Long id;
+    private SpaceType type;
+    private SpaceScale scale;
+    private List<UnitSpace> units;
+    private List<SecuritySystem> securities;
+    private List<AddOn> addOns;
+    private String name;   // 예: "강남 회의실 A"
+    private BigDecimal price;
 
     public Space(Long id, String name,
                  SpaceType type, SpaceScale scale,
@@ -25,17 +27,18 @@ public class Space implements SpaceComponent {
                  List<SecuritySystem> securities) 
     {
         this.id = id;
-        this.name = Objects.requireNonNull(name);
+        this.name = name;
         this.type = type;
         this.scale = scale;
         this.units = new ArrayList<>(units);
         this.securities = new ArrayList<>(securities);
+        this.price = BigDecimal.ZERO;
     }
 
 
-    @Override public Long getId() { return id; }
+    public Long getId() { return id; }
 
-    @Override
+
     public String getDescription() {
         return String.format("%s [%s/%s] Units: %s / Security: %s",
                 name, type, scale,
@@ -50,5 +53,12 @@ public class Space implements SpaceComponent {
      public List<UnitSpace> getUnits() { return Collections.unmodifiableList(units); }
      public List<SecuritySystem> getSecurities() { return Collections.unmodifiableList(securities); }
      public String getName() { return name; }
+     public BigDecimal getPrice() { return price; }
+     public void setPrice(BigDecimal price) { this.price = price; }
+     public List<AddOn> getAddOn(){return addOns;
+     }
+     public void SetAddOn(List<AddOn> list){
+        this.addOns = list;
+     }
 }
 

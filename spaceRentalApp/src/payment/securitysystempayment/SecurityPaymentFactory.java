@@ -1,12 +1,12 @@
 package payment.securitysystempayment;
 
-import space.SecuritySystem;
+import space.option.SecuritySystem;
 
 import java.util.EnumMap;
 import java.util.Map;
 
 public class SecurityPaymentFactory {
-    private final Map<SecuritySystem,SecurityPayment> registy=new EnumMap<>(SecuritySystem.class);
+    private static final Map<SecuritySystem,SecurityPayment> registy=new EnumMap<>(SecuritySystem.class);
     public SecurityPaymentFactory() {
         registy.put(SecuritySystem.CCTV,new Cctv());
         registy.put(SecuritySystem.DOOR_LOCK,new DoorLock());

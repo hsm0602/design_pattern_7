@@ -1,13 +1,13 @@
 package payment.unitspace;
 
-import space.UnitSpace;
+import space.option.UnitSpace;
 
 import java.util.EnumMap;
 import java.util.Map;
 
 public class UnitSpacePaymentFactory {
 
-    private final Map<UnitSpace,UnitSpacePayment> registry = new EnumMap<>(UnitSpace.class);
+    private static final Map<UnitSpace,UnitSpacePayment> registry = new EnumMap<>(UnitSpace.class);
 
     public UnitSpacePaymentFactory(){
         registry.put(UnitSpace.BREAK_ROOM,new BreakRoomPayment());

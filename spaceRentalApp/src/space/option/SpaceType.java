@@ -1,4 +1,4 @@
-package space;
+package space.option;
 
 /**
  * 공간의 종류를 나타내는 Enum

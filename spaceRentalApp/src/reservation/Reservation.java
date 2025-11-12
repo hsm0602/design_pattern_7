@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Reservation {
     private Long id;
     private final Long userId;       // 예약한 사용자 ID
-    private final Long spaceId;    // 예약된 공간 ID
+    private final Long spaceId;    // 예약된 공간 ID (Space.java의 id가 String이므로 String으로 변경)
     private final TimeState time;    // 예약 시간
     private ReservationStatus status;  // 예약 상태
     private final LocalDateTime createdAt; // 예약 생성 시각

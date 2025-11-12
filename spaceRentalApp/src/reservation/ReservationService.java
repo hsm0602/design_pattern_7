@@ -1,10 +1,10 @@
 package reservation;
 
 import pattern.ReservationObserver;
-import space.Space;
+import payment.PaymentService;
+import space.domain.Space;
 import space.SpaceRepository;
 import user.MemoryUserRepository;
-import user.PaymentMethod;
 import user.User;
 
 import java.time.LocalDateTime;
@@ -18,6 +18,7 @@ public class ReservationService {
     private final MemoryUserRepository userRepository = new MemoryUserRepository();
     private final SpaceRepository spaceRepository = new SpaceRepository();
     private final ReservationRepository reservationRepository = new ReservationRepository();
+    private final PaymentService paymentService = new PaymentService();
 
     private final List<ReservationObserver> observers = new ArrayList<>();
 
@@ -60,11 +61,8 @@ public class ReservationService {
         }
 
         // 2. 공간 조회
-        Space space = spaceRepository.findById(spaceId); // (SpaceRepository 구현 필요)
-        if (space == null) {
-            System.out.println("[예약 실패] 존재하지 않는 공간입니다.");
-            return null;
-        }
+        Space space = spaceRepository.findById(spaceId).orElseThrow(()->new IllegalArgumentException("찾는 공간이 없습니다.")); // (SpaceRepository 구현 필요)
+
 
         // 3. 겹치는 예약이 있는지 확인 (핵심 로직)
         List<Reservation> conflicts = reservationRepository.findBySpaceBetween(spaceId, start, end);
@@ -73,9 +71,10 @@ public class ReservationService {
             return null; // 예약이 겹치면 실패
         }
 
-        // 4. 예약 생성 및 저장
+        // 4. 예약 생성 및 저장(여기서 space price를 초기화 시켜줌.)
         TimeState time = new TimeState(start, end);
         Reservation newReservation = new Reservation(userId, spaceId, time);
+        space.setPrice(paymentService.OnedayTotal(newReservation));
         Reservation savedReservation = reservationRepository.save(newReservation);
 
         // 5. [Observer] 예약 생성 알림

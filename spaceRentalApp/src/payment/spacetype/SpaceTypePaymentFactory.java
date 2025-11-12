@@ -1,13 +1,13 @@
 package payment.spacetype;
 
-import space.SpaceType;
+import space.option.SpaceType;
 
 import java.util.EnumMap;
 import java.util.Map;
 
 public class SpaceTypePaymentFactory {
 
-    private final Map<SpaceType,SpaceTypePayment> registry = new EnumMap<>(SpaceType.class);
+    private static final Map<SpaceType,SpaceTypePayment> registry = new EnumMap<>(SpaceType.class);
 
     public SpaceTypePaymentFactory(){
         registry.put(SpaceType.CAFE,new CafePayment());

@@ -1,4 +1,4 @@
-package space;
+package space.option;
 
 /**
  * 보안 시스템의 종류를 나타내는 Enum

@@ -5,7 +5,7 @@ import java.util.EnumMap;
 import java.util.Map;
 
 public class DiscountPolicyFactory {
-    private final Map<UserGrade, DiscountPolicy> registry = new EnumMap<>(UserGrade.class);
+    private static final Map<UserGrade, DiscountPolicy> registry = new EnumMap<>(UserGrade.class);
 
     public DiscountPolicyFactory() {
         registry.put(UserGrade.GOLD,   new GoldDiscountPolicy());

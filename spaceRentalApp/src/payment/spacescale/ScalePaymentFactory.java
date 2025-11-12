@@ -1,12 +1,12 @@
 package payment.spacescale;
 
-import space.SpaceScale;
+import space.option.SpaceScale;
 
 import java.util.EnumMap;
 import java.util.Map;
 
 public class ScalePaymentFactory {
-    private final Map<SpaceScale,ScalePayment> registry = new EnumMap<>(SpaceScale.class);
+    private static final Map<SpaceScale,ScalePayment> registry = new EnumMap<>(SpaceScale.class);
 
     public ScalePaymentFactory(){
         registry.put(SpaceScale.ONE_PERSON, new OnePersonPayment());

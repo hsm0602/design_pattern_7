@@ -1,7 +1,11 @@
-package pattern;
+package space.domain;
+
+import space.option.SecuritySystem;
+import space.option.SpaceScale;
+import space.option.SpaceType;
+import space.option.UnitSpace;
 
 import java.util.List;
-import space.*;
 
 
 /**
